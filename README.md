@@ -24,6 +24,19 @@ Directory structure is as follows:
 
 Notice that to be able to execute appropriately this code and get the full system to work together, you may need to follow the instructions available in the thesis document.
 
+Also, several conectivity IP Addresses and so forth may need to be updated to make it work on your deployment.
+
+### Data Collection Authentication
+
+Facebook authentication data has been removed from `Data Collection > Facebook > FBCollector.py`:
+
+```
+PAGE_ID = ''
+PAGE_TOKEN = ''
+```
+
+You will need to update them to connect to your own Facebook page.
+
 ## License
 
 Feel free to base your work on this project, attending to the MIT License applied. Any work based on this thesis or code must quote the original source.

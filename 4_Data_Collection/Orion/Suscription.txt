@@ -1,0 +1,65 @@
+curl -v 192.168.2.26:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -d @- <<EOF
+{
+  "description": "Suscripcion para obtener T y H del MUSEO",
+  "subject": {
+    "entities": [
+      {
+        "id": "Museo",
+        "type": "Edificio"
+      }
+    ],
+    "condition": {
+      "attrs": [
+        "Temperatura",
+        "Humedad",
+        "Fecha"
+      ]
+    }
+  },
+  "notification": {
+    "http": {
+      "url": "http://192.168.2.26:1028/pushData"
+    },
+    "attrs": [
+      "Temperatura",
+      "Humedad",
+      "Fecha"
+    ]
+  },
+  "expires": "2040-01-01T14:00:00.00Z",
+  "throttling": 5
+}
+EOF
+
+-----
+
+curl -v 192.168.2.26:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -d @- <<EOF
+{
+  "description": "Suscripcion para obtener eventos del MUSEO",
+  "subject": {
+    "entities": [
+      {
+        "id": "Evento",
+        "type": "ControlAcceso"
+      }
+    ],
+    "condition": {
+      "attrs": [
+        "Evento",
+        "Fecha"
+      ]
+    }
+  },
+  "notification": {
+    "http": {
+      "url": "http://192.168.2.26:1028/pushData"
+    },
+    "attrs": [
+      "Evento",
+      "Fecha"
+    ]
+  },
+  "expires": "2040-01-01T14:00:00.00Z",
+  "throttling": 5
+}
+EOF
